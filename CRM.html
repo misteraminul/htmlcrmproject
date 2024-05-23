@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Form</title>
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Condensed', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .left-column {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .right-column {
+            flex: 1;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3rem; /* Increase font size by 3 pixels */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], select, textarea, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px; /* Increase font size by 3 pixels */
+        }
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #e83234;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px; /* Increase font size by 3 pixels */
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #222222;
+        }
+        .horizontal-fields {
+            display: flex;
+            justify-content: space-between;
+        }
+        .horizontal-fields .form-group {
+            width: 100%;
+        }
+        /* Pop-up style */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #11822d; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+        }
+        .popup-message {
+            text-align: center;
+            color: #fff; /* Changed text color to white */
+            font-weight: bold; 
+        }
+        /* Image styling */
+        .header-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 300px; /* Adjust the width as needed */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header Image -->
+<img class="header-image" src="https://pathao.com/bn/wp-content/uploads/sites/6/2019/02/Pathao_Logo-.svg" alt="Pathao Logo">
+ <h2>Interaction Form</h2>
+<div class="container">
+   
+    <div class="left-column">
+        <form id="crmForm" action="#" method="post">
+            <div class="form-group">
+                <label for="supportChannel">Support Channel:</label>
+                <select id="supportChannel" name="supportChannel">
+                    <option value="Inbound">Inbound</option>
+                    <option value="Campaign Management">Campaign Management</option>
+                    <option value="Complain Management">Complain Management</option>
+                    <option value="Report Issue & Email">Report Issue & Email</option>
+                    <option value="Live Chat">Live Chat</option>
+                    <option value="Foodman Live Support">Foodman Live Support</option>
+                    <option value="Social Media">Social Media</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="text" id="contactNumber" name="contactNumber">
+            </div>
+            <div class="form-group">
+                <label for="interactionLink">Interaction Link for Non Voice:</label>
+                <input type="text" id="interactionLink" name="interactionLink">
+            </div>
+            <div class="form-group">
+                <label for="escalated">Escalated to Complaint Management:</label>
+                <input type="checkbox" id="escalated" name="escalated">
+            </div>
+            <div class="form-group">
+                <label for="attachment">Attachment (If Needed):</label>
+                <input type="file" id="attachment" name="attachment">
+            </div>
+        </form>
+    </div>
+    <div class="right-column">
+        <form id="crmForm" action="#" method="post">
+            <div class="form-group">
+                <label for="businessVertical">Business Vertical:</label>
+                <select id="businessVertical" name="businessVertical">
+                    <option value="Courier">Courier</option>
+                    <option value="Ride">Ride</option>
+                    <option value="Car Plus">Car Plus</option>
+                    <option value="Car Prime">Car Prime</option>
+                    <option value="Car Max">Car Max</option>
+                    <option value="Food">Food</option>
+                    <option value="Parcel">Parcel</option>
+                    <option value="BNPL">BNPL</option>
+                    <option value="DP">DP</option>
+                    <option value="Shop">Shop</option>
+                    <option value="Silent Call/Dead Call">Silent Call/Dead Call</option>
+                    <option value="Non Relevant Service">Non Relevant Service</option>
+                    <option value="Emergency Hotline">Emergency Hotline</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tag">Tag:</label>
+                <select id="tag" name="tag">
+                    <option value="Complain About Cancellation fee">Complain About Cancellation fee</option>
+                    <option value="Request to update payment method">Request to update payment method</option>
+                    <option value="Request to update receiver contact info">Request to update receiver contact info</option>
+                    <option value="Request Vehicle Update">Request Vehicle Update</option>
+                </select>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="orderID">Order ID / Consignment ID / Trip ID:</label>
+            <input type="text" id="orderID" name="orderID">
+        </div>
+
+ <div class="form-group">
+    <label for="issueDetails">Issue Details</label>
+    <textarea id="issueDetails" name="issueDetails" rows="1"></textarea>
+</div>
+               
+</form>
+</div>
+
+<input type="submit" value="SUBMIT" id="submitBtn">
+
+<!-- Popup Message -->
+<div class="popup" id="popupMessage">
+    <div class="popup-message">Your record has been submitted successfully ✅</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the submit button element
+        var submitBtn = document.getElementById('submitBtn');
+        
+        // Attach click event listener to the submit button
+        submitBtn.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            
+            // Show the popup
+            var popup = document.getElementById('popupMessage');
+            popup.style.display = 'block';
+            
+            // Hide the popup after 3 seconds
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 3000);
+        });
+    });
+</script>
+
+</body>
+</html>
