@@ -99,6 +99,30 @@
             margin: 20px auto;
             max-width: 300px; /* Adjust the width as needed */
         }
+        .buttons-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 12px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .button-engineroom {
+            background-color: #e83234;
+        }
+        .button-hermes {
+            background-color: #87ceeb; /* Sky blue color */
+        }
+        .button-enlist {
+            background-color: #e83234;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -106,7 +130,15 @@
 
 <!-- Header Image -->
 <img class="header-image" src="https://pathao.com/bn/wp-content/uploads/sites/6/2019/02/Pathao_Logo-.svg" alt="Pathao Logo">
- <h2>Interaction Form</h2>
+
+<!-- Buttons -->
+<div class="buttons-container">
+    <a href="https://engineroom.pathaointernal.com/" class="button button-engineroom">Engineroom</a>
+    <a href="https://hermes.pathaointernal.com/" class="button button-hermes">Hermes</a>
+    <a href="https://enlist.pathaointernal.com/" class="button button-enlist">Enlist</a>
+</div>
+
+<h2>Interaction Form</h2>
 <div class="container">
    
     <div class="left-column">
@@ -171,48 +203,46 @@
                 </select>
         </div>
 
-
-
         <div class="form-group">
             <label for="orderID">Order ID / Consignment ID / Trip ID:</label>
             <input type="text" id="orderID" name="orderID">
         </div>
 
- <div class="form-group">
-    <label for="issueDetails">Issue Details</label>
-    <textarea id="issueDetails" name="issueDetails" rows="1"></textarea>
-</div>
+        <div class="form-group">
+            <label for="issueDetails">Issue Details</label>
+            <textarea id="issueDetails" name="issueDetails" rows="1"></textarea>
+        </div>
                
-</form>
-</div>
+        </form>
+    </div>
 
-<input type="submit" value="SUBMIT" id="submitBtn">
+    <input type="submit" value="SUBMIT" id="submitBtn">
 
-<!-- Popup Message -->
-<div class="popup" id="popupMessage">
-    <div class="popup-message">Your record has been submitted successfully ✅</div>
-</div>
+    <!-- Popup Message -->
+    <div class="popup" id="popupMessage">
+        <div class="popup-message">Your record has been submitted successfully ✅</div>
+    </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the submit button element
-        var submitBtn = document.getElementById('submitBtn');
-        
-        // Attach click event listener to the submit button
-        submitBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default form submission behavior
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the submit button element
+            var submitBtn = document.getElementById('submitBtn');
             
-            // Show the popup
-            var popup = document.getElementById('popupMessage');
-            popup.style.display = 'block';
-            
-            // Hide the popup after 3 seconds
-            setTimeout(function() {
-                popup.style.display = 'none';
-            }, 3000);
+            // Attach click event listener to the submit button
+            submitBtn.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+                
+                // Show the popup
+                var popup = document.getElementById('popupMessage');
+                popup.style.display = 'block';
+                
+                // Hide the popup after 3 seconds
+                setTimeout(function() {
+                    popup.style.display = 'none';
+                }, 3000);
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
