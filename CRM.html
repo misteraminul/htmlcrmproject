@@ -11,6 +11,12 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
+        .time-spent-header {
+            text-align: right;
+            margin-right: 30px;
+        }
+
         .container {
             max-width: 1500px;
             margin: 20px auto;
@@ -49,7 +55,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 15px; /* Increase font size by 3 pixels */
+            font-size: 15px; 
         }
         input[type="checkbox"] {
             margin-top: 10px;
@@ -62,8 +68,9 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 15px; /* Increase font size by 3 pixels */
-            transition: background-color 0.3s ease;
+            font-size: 15px;
+            font-weight: bold;
+            transition: background-color 0.1s ease;
         }
         input[type="submit"]:hover {
             background-color: #222222;
@@ -102,10 +109,15 @@
         .buttons-container {
             display: flex;
             justify-content: space-around;
-            margin-bottom: 20px;
+
+            margin-left: 30px;
+            margin-right: 30px;
+            padding: 0px;
+            background-color: #f4f4f4; 
+            border-radius: 8px;
         }
         .button {
-            padding: 12px;
+            padding: 5px;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -116,12 +128,18 @@
         }
         .button-engineroom {
             background-color: #e83234;
+            font-weight: bold;
         }
         .button-hermes {
-            background-color: #87ceeb; /* Sky blue color */
+            background-color: #006dd4; 
+            font-weight: bold;
         }
         .button-enlist {
             background-color: #e83234;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
@@ -131,21 +149,24 @@
 <!-- Header Image -->
 <img class="header-image" src="https://pathao.com/bn/wp-content/uploads/sites/6/2019/02/Pathao_Logo-.svg" alt="Pathao Logo">
 
+<h2>Interaction Form</h2>
+<h5 class="time-spent-header">Time Spent: <span id="timeSpent">0s</span></h5>
+
 <!-- Buttons -->
 <div class="buttons-container">
-    <a href="https://engineroom.pathaointernal.com/" class="button button-engineroom">Engineroom</a>
-    <a href="https://hermes.pathaointernal.com/" class="button button-hermes">Hermes</a>
-    <a href="https://enlist.pathaointernal.com/" class="button button-enlist">Enlist</a>
+    <a href="https://engineroom.pathaointernal.com/" target="_blank" class="button button-engineroom">Engineroom</a>
+    <a href="https://hermes.pathaointernal.com/" target="_blank" class="button button-hermes">Hermes</a>
+    <a href="https://enlist.pathaointernal.com/" target="_blank" class="button button-enlist">Enlist</a>
 </div>
 
-<h2>Interaction Form</h2>
 <div class="container">
-   
     <div class="left-column">
         <form id="crmForm" action="#" method="post">
+           
             <div class="form-group">
                 <label for="supportChannel">Support Channel:</label>
                 <select id="supportChannel" name="supportChannel">
+                    <option value="Inbound">Inbound</option>
                     <option value="Inbound">Inbound</option>
                     <option value="Campaign Management">Campaign Management</option>
                     <option value="Complain Management">Complain Management</option>
@@ -156,6 +177,17 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="customerType">Customer Type:</label>
+                <select id="customerType" name="customerType">
+                    <option value="-">-</option>
+                    <option value="Foodman">Foodman</option>
+                    <option value="Rider">Rider</option>
+                    <option value="Captain">Captain</option>
+                    <option value="Merchant">Merchant</option>
+                    <option value="User">User</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="contactNumber">Contact Number:</label>
                 <input type="text" id="contactNumber" name="contactNumber">
             </div>
@@ -163,14 +195,13 @@
                 <label for="interactionLink">Interaction Link for Non Voice:</label>
                 <input type="text" id="interactionLink" name="interactionLink">
             </div>
+            
             <div class="form-group">
-                <label for="escalated">Escalated to Complaint Management:</label>
-                <input type="checkbox" id="escalated" name="escalated">
+                <label for="issueDetails">Issue Details</label>
+                <textarea id="issueDetails" name="issueDetails" rows="1"></textarea>
             </div>
-            <div class="form-group">
-                <label for="attachment">Attachment (If Needed):</label>
-                <input type="file" id="attachment" name="attachment">
-            </div>
+            
+           
         </form>
     </div>
     <div class="right-column">
@@ -178,6 +209,7 @@
             <div class="form-group">
                 <label for="businessVertical">Business Vertical:</label>
                 <select id="businessVertical" name="businessVertical">
+                    <option value="-">-</option>
                     <option value="Courier">Courier</option>
                     <option value="Ride">Ride</option>
                     <option value="Car Plus">Car Plus</option>
@@ -187,32 +219,42 @@
                     <option value="Parcel">Parcel</option>
                     <option value="BNPL">BNPL</option>
                     <option value="DP">DP</option>
-                    <option value="Shop">Shop</option>
-                    <option value="Silent Call/Dead Call">Silent Call/Dead Call</option>
-                    <option value="Non Relevant Service">Non Relevant Service</option>
-                    <option value="Emergency Hotline">Emergency Hotline</option>
+        
+            
                 </select>
             </div>
             <div class="form-group">
                 <label for="tag">Tag:</label>
                 <select id="tag" name="tag">
+                    <option value="-">-</option>
                     <option value="Complain About Cancellation fee">Complain About Cancellation fee</option>
                     <option value="Request to update payment method">Request to update payment method</option>
                     <option value="Request to update receiver contact info">Request to update receiver contact info</option>
                     <option value="Request Vehicle Update">Request Vehicle Update</option>
                 </select>
-        </div>
+            </div>
+            <div class="form-group">
+                <label for="orderID">Order ID / Consignment ID / Trip ID:</label>
+                <input type="text" id="orderID" name="orderID">
+            </div>
 
-        <div class="form-group">
-            <label for="orderID">Order ID / Consignment ID / Trip ID:</label>
-            <input type="text" id="orderID" name="orderID">
-        </div>
+            <div class="form-group">
+                <label for="escalated" style="display: inline-block;">Escalation:</label>
+<input type="checkbox" id="escalated" name="escalated" style="display: inline-block;">
 
-        <div class="form-group">
-            <label for="issueDetails">Issue Details</label>
-            <textarea id="issueDetails" name="issueDetails" rows="1"></textarea>
-        </div>
-               
+            </div>
+            
+            <div class="form-group hidden" id="escalationDropdown">
+                <label for="escalationTeam">Select Team:</label>
+                <select id="escalationTeam" name="escalationTeam">
+                    <option value="Digital Payments Team">Digital Payments Team</option>
+                    <option value="Food KAM Team">Food KAM Team</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="attachment">Attachment (If Needed):</label>
+                <input type="file" id="attachment" name="attachment">
+            </div>
         </form>
     </div>
 
@@ -224,6 +266,20 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var startTime = new Date().getTime(); // Get the time when the page is loaded
+            
+            // Update the time spent every second
+            setInterval(function() {
+                var currentTime = new Date().getTime();
+                var timeSpentInSeconds = Math.round((currentTime - startTime) / 1000); // Calculate time spent in seconds
+                var minutes = Math.floor(timeSpentInSeconds / 60);
+                var seconds = timeSpentInSeconds % 60;
+                var formattedTime = minutes + 'm ' + seconds + 's'; // Format time as minutes and seconds
+                document.getElementById('timeSpent').innerText = formattedTime; // Update the span element
+            }, 1000); // Update every second (1000 milliseconds)
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             // Get the submit button element
             var submitBtn = document.getElementById('submitBtn');
@@ -241,8 +297,19 @@
                     popup.style.display = 'none';
                 }, 3000);
             });
+
+            // Show/hide the escalation dropdown based on the checkbox state
+            var escalatedCheckbox = document.getElementById('escalated');
+            var escalationDropdown = document.getElementById('escalationDropdown');
+            
+            escalatedCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    escalationDropdown.classList.remove('hidden');
+                } else {
+                    escalationDropdown.classList.add('hidden');
+                }
+            });
         });
     </script>
-
 </body>
 </html>
